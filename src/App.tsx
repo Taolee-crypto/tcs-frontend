@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { PublicDetailPanel, PortalDetailPanel } from './DetailPanels'
 import { Link, NavLink, Route, Routes, useLocation, useParams, Navigate } from 'react-router-dom'
 import {
   ArrowRight, ArrowUpRight, Globe2, Menu, X, ShieldCheck, Music2, Wallet,
@@ -241,7 +242,7 @@ function PortalPage() {
     {!selected ? <div className="portal-workspace-grid">{portal.sections.map((item,i)=><Link className="portal-workspace-card" key={item.slug} to={'/portal/'+portal.key+'/'+item.slug}><small>{String(i+1).padStart(2,'0')}</small><h3>{item.title}</h3><p>{item.description}</p><span>업무 화면 열기 <ArrowUpRight size={14}/></span></Link>)}</div> :
       <><div className="portal-detail-summary"><div><small>SECTION</small><b>{selected.title}</b></div><div><small>SUB MENU</small><b>{selected.children.length}개</b></div><div><small>ACCESS</small><b>역할·권한 기준</b></div></div>
       <div className="portal-child-list">{selected.children.map((name,i)=><Link key={name} to={'/portal/'+portal.key+'/'+selected.slug+'/'+(i+1)} className={selectedChild===name?'current':''}><span>{String(i+1).padStart(2,'0')}</span><b>{name}</b><ArrowUpRight size={15}/></Link>)}</div>
-      <div className="portal-demo-panel"><div className="section-kicker">WORKFLOW PREVIEW</div><h3>{selectedChild ?? selected.title} 업무 흐름</h3><p>이 화면은 메뉴 구조와 업무 흐름을 검토하기 위한 시연용 인터페이스입니다. 실제 데이터 조회·저장·승인·정산 처리는 연결되어 있지 않으며, 향후 확정된 API와 역할별 권한 정책에 따라 구현합니다.</p><div className="portal-demo-steps"><span>01 · 정보 확인</span><i/><span>02 · 근거 검토</span><i/><span>03 · 처리 이력</span></div></div></>}
+      <PortalDetailPanel portalTitle={portal.title} portalKey={portal.key} sectionTitle={selected.title} sectionSlug={selected.slug} childTitle={selectedChild} children={selected.children}/></>}
    </div>
   </section>
  </main>
@@ -337,7 +338,7 @@ function PublicPage({ categoryKey }: { categoryKey: string }) {
         <div className="public-main-heading"><div className="section-kicker">{selected ? selected.en : category.eyebrow}</div><h2>{selected ? '핵심 안내' : '서비스 안내'}</h2><p>{description}</p></div>
         <div className="public-points">{(selected?.points ?? ['TCS는 권리정보와 이용기록, 정산 근거를 연결하는 공통 인프라입니다.','각 참여자는 독립적인 역할과 데이터 영역을 유지합니다.','세부 업무는 관련 규정·계약·권한 범위에 따라 처리합니다.']).map((point,i)=><article className="public-point" key={i}><span>0{i+1}</span><p>{point}</p></article>)}</div>
         {!selected && <div className="public-child-grid">{category.items.map((item,i)=><Link className="public-child-card" to={'/'+category.key+'/'+item.slug} key={item.slug}><small>0{i+1} / {item.en}</small><h3>{item.title}</h3><p>{item.desc}</p><span>상세 안내 <ArrowUpRight size={15}/></span></Link>)}</div>}
-        {selected && <div className="public-detail-panel"><div><div className="section-kicker">RELATED INFORMATION</div><h3>함께 확인할 항목</h3><p>이 안내는 TCS의 공통 관리 원칙을 설명하는 시연 화면입니다. 실제 신청·계약·정산 및 자료 제출은 공식 규정과 권한 확인 절차가 연결된 뒤 제공됩니다.</p></div><Link className="primary-button" to={'/'+category.key}> {category.title} 전체 보기 <ArrowRight size={16}/></Link></div>}
+        {selected && <><PublicDetailPanel categoryKey={category.key} title={selected.title} en={selected.en} description={selected.desc} points={selected.points}/><div className="public-detail-panel"><div><div className="section-kicker">RELATED INFORMATION</div><h3>관련 안내</h3><p>같은 분야의 세부 정책과 절차를 함께 확인할 수 있습니다.</p></div><Link className="primary-button" to={'/'+category.key}> {category.title} 전체 보기 <ArrowRight size={16}/></Link></div></>}
       </div>
     </section>
   </main>
