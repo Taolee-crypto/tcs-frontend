@@ -145,6 +145,19 @@ function Home({ language }: { language: Language }) {
 
     <section className="global-section section-wrap"><div className="global-graphic"><div className="global-globe"><Globe2 size={76} strokeWidth={1}/><span className="globe-dot dot-1"/><span className="globe-dot dot-2"/><span className="globe-dot dot-3"/></div><div className="global-orbit-line"/></div><div className="global-copy"><div className="section-kicker">BEYOND BORDERS</div><h2>음악의 국경을 넘어<br/><em>글로벌 권리 네트워크로.</em></h2><p>국가별 저작권 관리체계와 해외 관리단체, 국제 협력 및 상호관리 구조를 고려해 글로벌 권리정보와 정산 연결 기반을 구축합니다.</p><Link className="inline-link" to="/global">글로벌 네트워크 <ArrowUpRight size={16}/></Link></div></section>
 
+    <section className="home-detail-links section-wrap">
+      <div className="section-kicker">EXPLORE TCS</div>
+      <div className="home-detail-heading"><h2>TCS 핵심 안내</h2><p>플랫폼의 역할과 관리 기준을 주제별로 살펴보세요.</p></div>
+      <div className="home-detail-grid">
+        <Link to="/home/tcs-intro"><b>01</b><span>TCS 소개</span><ArrowUpRight size={16}/></Link>
+        <Link to="/home/copyright-transparency"><b>02</b><span>저작권 투명관리</span><ArrowUpRight size={16}/></Link>
+        <Link to="/home/tl-framework"><b>03</b><span>TL 관리 기준</span><ArrowUpRight size={16}/></Link>
+        <Link to="/home/creator-economy"><b>04</b><span>창작자 경제 생태계</span><ArrowUpRight size={16}/></Link>
+        <Link to="/home/copyright-finance"><b>05</b><span>저작권 금융</span><ArrowUpRight size={16}/></Link>
+        <Link to="/home/global-network"><b>06</b><span>글로벌 네트워크</span><ArrowUpRight size={16}/></Link>
+      </div>
+    </section>
+
     <section className="final-cta"><div className="section-wrap final-cta-inner"><div><div className="section-kicker">CONNECT WITH TCS</div><h2>더 투명한 음악저작권 생태계,<br/><em>함께 연결해 나갑니다.</em></h2><p>플랫폼 연동과 기관 협력에 관한 문의를 환영합니다.</p></div><div className="final-cta-actions"><Link className="primary-button" to="/contact">협력 및 연동 문의 <ArrowUpRight size={17}/></Link><Link className="text-button" to="/about">TCS 소개 <ArrowRight size={16}/></Link></div></div></section>
   </main>
 }
