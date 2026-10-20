@@ -226,10 +226,12 @@ const portalDefinitions:PortalDefinition[] = [
 
 function PortalPage() {
  const {portalKey,section:sectionSlug,child}=useParams()
- const portal=portalDefinitions.find(item=>item.key===portalKey) ?? portalDefinitions[0]
+ const matchedPortal=portalDefinitions.find(item=>item.key===portalKey)
+ const portal=matchedPortal ?? portalDefinitions[0]
  const selected=portal.sections.find(item=>item.slug===sectionSlug)
  const childIndex=child ? Number(child)-1 : -1
- const selectedChild=selected && childIndex>=0 ? selected.children[childIndex] : undefined
+ const selectedChild=selected && childIndex>=0 && Number.isInteger(childIndex) ? selected.children[childIndex] : undefined
+ if (!matchedPortal || (sectionSlug && !selected) || (child && (!selected || !selectedChild))) return <Navigate to={'/portal/'+portal.key} replace/>
  const heading=selectedChild ?? selected?.title ?? portal.title
  const description=selected ? (selectedChild ? selected.title+'의 세부 업무와 처리 상태를 확인하는 화면입니다.' : selected.description) : portal.subtitle
  return <main className="portal-workspace">
