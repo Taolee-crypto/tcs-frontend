@@ -22,6 +22,7 @@ const portals = [
   { icon: Landmark, title: '협회 관리자', en: 'Association Portal', desc: '회원·신탁·권리·징수·분배 업무를 관리합니다.', to: '/portal/association', tag: 'FOR ASSOCIATIONS' },
   { icon: Network, title: '유통사·이용사업자', en: 'Business Portal', desc: '독립 플랫폼의 저작물 및 음악 사용정보를 연동합니다.', to: '/portal/partner', tag: 'FOR PARTNERS' },
   { icon: Wallet, title: '금융기관 포털', en: 'Finance Portal', desc: '동의 기반 저작권 수입 확인과 금융 업무를 연결합니다.', to: '/portal/finance', tag: 'FOR FINANCIAL INSTITUTIONS' },
+  { icon: Globe2, title: '글로벌 네트워크', en: 'Global Network', desc: '국가별 관리단체와 국제 협력 및 해외 정산을 연결합니다.', to: '/portal/global', tag: 'FOR GLOBAL PARTNERS' },
 ]
 
 function Shell({ children, language, setLanguage }: { children: React.ReactNode; language: Language; setLanguage: (v: Language) => void }) {
@@ -357,6 +358,18 @@ function InfoPage({ type }: { type: string }) {
   return <main className="subpage"><div className="subpage-hero"><div className="section-kicker">{data.eyebrow}</div><h1>{data.title.split('\n').map((line, i) => <span key={i}>{line}<br/></span>)}</h1><p>{data.desc}</p><Link className="primary-button" to="/login">로그인 및 이용 안내 <ArrowUpRight size={16}/></Link></div><div className="section-wrap subpage-body"><div className="notice-card"><ShieldCheck size={22}/><div><b>서비스 구축 단계</b><p>이 페이지는 전체 정보구조와 화면 설계를 위한 초기 프론트엔드입니다. 세부 규정과 실제 업무 데이터는 확인된 기준 및 백엔드 연동 계약에 따라 순차적으로 연결합니다.</p></div></div></div></main>
 }
 
+
+function LoginPage() {
+ const choices = [
+  {key:'creator',title:'창작자 포털',desc:'저작물·권리·이용내역·저작권료 관리'},
+  {key:'association',title:'협회 관리자',desc:'회원·신탁·권리·징수·분배 관리'},
+  {key:'partner',title:'유통사·음악 이용사업자',desc:'저작물·이용정보·정산·API 연동'},
+  {key:'finance',title:'금융기관 제휴 포털',desc:'수입 확인·대출 심사·상환 연계'},
+  {key:'global',title:'글로벌 네트워크',desc:'국가별 관리·국제 협력·글로벌 정산'}
+ ]
+ return <main className="login-page"><div className="login-page-inner"><div className="section-kicker">SECURE ROLE-BASED ACCESS</div><h1>TCS 통합 접속</h1><p>사용자 역할에 해당하는 업무 공간을 선택합니다. 실제 계정 인증과 권한 검증은 백엔드 연동 단계에서 연결됩니다.</p><div className="login-demo-notice">시연 모드 · 실제 로그인·회원 인증 기능은 아직 연결되지 않았습니다.</div><div className="login-role-grid">{choices.map(item=><Link key={item.key} to={'/portal/'+item.key}><small>ROLE WORKSPACE</small><h2>{item.title}</h2><p>{item.desc}</p><span>업무 공간 둘러보기 <ArrowUpRight size={15}/></span></Link>)}</div><Link className="login-home-link" to="/">TCS HOME으로 돌아가기 <ArrowRight size={15}/></Link></div></main>
+}
+
 export default function App() {
   const [language, setLanguage] = useState<Language>('KR')
   const location = useLocation()
@@ -369,6 +382,7 @@ export default function App() {
     <Route path="/about" element={<Navigate to="/home/tcs-intro" replace/>}/>
     <Route path="/network" element={<Navigate to="/business/distributors" replace/>}/>
     <Route path="/contact" element={<Navigate to="/support/contact" replace/>}/>
+    <Route path="/login" element={<LoginPage/>}/>
     <Route path="/portal/:portalKey" element={<PortalPage/>}/>
     <Route path="/portal/:portalKey/:section" element={<PortalPage/>}/>
     <Route path="/portal/:portalKey/:section/:child" element={<PortalPage/>}/>
