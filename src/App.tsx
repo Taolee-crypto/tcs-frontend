@@ -295,12 +295,12 @@ const publicCategories: PublicCategory[] = [
     {slug:'financial-partners',title:'제휴 금융기관',en:'Financial Partners',desc:'TCS와 데이터 연계 계약을 체결한 금융기관의 역할과 책임을 안내합니다.',points:['금융기관은 대출 심사·실행·금리·상환을 책임집니다.','TCS는 동의 범위 내 권리·수입 데이터 검증을 지원합니다.','금융기관 포털은 협회 관리자 권한과 분리됩니다.']},
     {slug:'finance-faq',title:'금융 FAQ',en:'Finance FAQ',desc:'저작권 수입정보 연계와 금융 신청에 관한 자주 묻는 질문입니다.',points:['TCS는 대출을 직접 실행하거나 금리를 정하지 않습니다.','수입정보 제공은 창작자의 동의와 권한 범위에 따릅니다.','대출 가능 여부와 조건은 제휴 금융기관의 심사 결과에 따릅니다.']},
   ]},
-  {key:'global',title:'GLOBAL',en:'GLOBAL',eyebrow:'CROSS-BORDER RIGHTS NETWORK',intro:'국가별 저작권 관리체계와 해외 관리단체, 국제 협력 및 상호관리, 해외 이용료 징수·분배의 연결 기반을 소개합니다.',items:[
-    {slug:'country-systems',title:'국가별 저작권 관리체계',en:'Country Copyright Systems',desc:'국가별 저작권 법제와 관리단체의 운영 차이를 고려한 글로벌 연계 구조입니다.',points:['각 국가의 법률·제도와 권리 범위를 구분합니다.','현지 관리단체의 공식 기준을 확인합니다.','국가별 차이를 단일 규칙으로 단순화하지 않습니다.']},
-    {slug:'overseas-societies',title:'해외 관리단체',en:'Overseas Collective Management Organizations',desc:'해외 저작권 관리단체와의 정보 교환 및 협력 관계를 관리합니다.',points:['단체별 역할과 관리 권리 범위를 확인합니다.','공식 식별자와 데이터 교환 기준을 매핑합니다.','협력 상태와 담당 창구를 기록합니다.']},
-    {slug:'reciprocal-agreements',title:'국제 협력 및 상호관리',en:'International Cooperation & Reciprocal Agreements',desc:'국가·단체 간 상호관리계약과 협력 범위에 관한 정보를 연결합니다.',points:['계약 당사자와 적용 지역을 확인합니다.','대상 권리·이용 유형·기간을 구분합니다.','계약 변경과 유효기간 이력을 보존합니다.']},
-    {slug:'foreign-royalties',title:'해외 이용료 징수·분배',en:'Foreign Royalties Collection & Distribution',desc:'해외 이용정보와 징수·분배 자료를 국가·통화별로 관리하는 구조입니다.',points:['원천 이용정보와 현지 정산 자료를 연결합니다.','통화·환율 기준일과 금액 항목을 구분합니다.','분배·지급 상태와 정정 이력을 관리합니다.']},
-    {slug:'global-creators',title:'글로벌 창작자 안내',en:'Global Creator Guide',desc:'해외 권리정보와 이용내역, 국제 정산 관련 기본 안내입니다.',points:['해외 관리 범위와 계약 상태를 확인합니다.','국가별 권리정보 확인 절차를 안내합니다.','해외 정산은 현지 제도와 상호관리 조건에 따릅니다.']},
+  {key:'global',title:'GLOBAL',en:'GLOBAL',eyebrow:'GLOBAL TL SETTLEMENT & TAX',intro:'국가별 저작권협회 체계에 의존하지 않고 공통 TL 정산으로 글로벌 창작자와 독립 플랫폼을 연결하며, 최종 지급 단계에서 국가별 세금 공제를 적용하는 구조를 소개합니다.',items:[
+    {slug:'global-tl-settlement',title:'글로벌 TL 정산',en:'Global TL Settlement',desc:'국가와 플랫폼에 관계없이 공통 TL 단위로 이용량을 환산하고 창작자별 정산을 수행합니다.',points:['각 참여 플랫폼의 이용기록을 공통 TL 기준으로 환산합니다.','창작자별 권리·기여 관계에 따라 TL을 배분하고 정산 근거를 보존합니다.','국가별 저작권협회나 상호관리계약을 글로벌 TL 정산의 필수 전제로 두지 않습니다.']},
+    {slug:'global-creators',title:'글로벌 창작자 안내',en:'Global Creator Guide',desc:'글로벌 창작자 프로필과 권리·지분, 거주지 및 세법상 납세 관할 정보를 구분해 관리합니다.',points:['국적과 세법상 거주지 및 납세 관할을 별도 정보로 관리합니다.','권리자·지분·지급 계정 정보는 확인 가능한 근거에 따라 연결합니다.','세금정보는 적법한 목적과 접근 권한 범위에서 처리합니다.']},
+    {slug:'global-platforms',title:'글로벌 플랫폼 네트워크',en:'Global Platform Network',desc:'독립적으로 운영되는 플랫폼의 이용기록과 TL 정산 데이터를 공통 규격으로 연결합니다.',points:['플랫폼은 고객·영업·마케팅 데이터를 독립적으로 관리합니다.','이용기록과 TL 산정에 필요한 데이터만 계약·권한 범위에서 교환합니다.','모든 참여 플랫폼에 동일한 기본 연동·보호 원칙을 적용합니다.']},
+    {slug:'tax-deduction',title:'국가별 세금 공제',en:'Country Tax Deduction',desc:'최종 지급 단계에서 창작자의 납세 관할과 소득 유형 등에 맞는 세금 공제 기준을 확인하고 적용합니다.',points:['세율은 국적만으로 결정하지 않고 세법상 거주지·납세 관할을 확인합니다.','소득의 법적 성격, 지급자·지급 구조, 조세조약 및 현지 법령을 함께 검토합니다.','적용 세율의 근거·시행일·검토자·공제 이력을 보존합니다.']},
+    {slug:'global-payments',title:'국제 지급 및 증빙',en:'Cross-Border Payments & Records',desc:'공제 전 정산액, 세금 공제액, 최종 지급액을 분리해 기록하고 지급 및 증빙을 관리합니다.',points:['TL 정산 결과와 세금 계산 결과를 별도 항목으로 관리합니다.','공제 전 금액·공제액·최종 지급액을 명세서에서 구분합니다.','국가별 신고·원천징수·증빙 요건은 법률 및 세무 검토 후 확정합니다.']},
   ]},
   {key:'support',title:'고객지원',en:'Customer Support',eyebrow:'HELP & INFORMATION',intro:'TCS 이용자를 위한 공지, FAQ, 자료, 문의, 민원·이의제기 및 정책 문서를 안내합니다.',items:[
     {slug:'notices',title:'공지사항',en:'Notices',desc:'서비스 운영 및 정책 변경, 시스템 안내를 공지하는 공간입니다.',points:['중요 공지의 게시일과 적용일을 구분합니다.','정책 변경은 변경 이력과 함께 안내합니다.','긴급 장애 및 점검 안내를 별도로 표시합니다.']},
