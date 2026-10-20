@@ -20,7 +20,7 @@ const publicGuides: Record<string, { purpose: string; workflow: string[]; record
 
 const categoryNames: Record<string, string> = {
   home: 'TCS 핵심 구조', copyright: '권리·이용·정산 관리', membership: '회원·신탁 관리',
-  business: '플랫폼·사업자 연동', finance: '저작권 수입 금융 연계', global: '국제 권리·정산 연계', support: '고객지원 업무'
+  business: '플랫폼·사업자 연동', finance: '저작권 수입 금융 연계', global: '글로벌 TL 정산·세금 공제', support: '고객지원 업무'
 }
 
 export function PublicDetailPanel({ categoryKey, title, en, description, points }: PublicDetailProps) {
