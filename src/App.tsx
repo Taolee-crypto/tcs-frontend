@@ -3,7 +3,7 @@ import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom'
 import {
   ArrowRight, ArrowUpRight, Globe2, Menu, X, ShieldCheck, Music2, Wallet,
   Landmark, Network, FileMusic, ChartNoAxesCombined, Users, LockKeyhole,
-  RadioTower, Scale, BadgeCheck, CircleHelp
+  RadioTower, Scale, BadgeCheck
 } from 'lucide-react'
 
 type Language = 'KR' | 'EN'
