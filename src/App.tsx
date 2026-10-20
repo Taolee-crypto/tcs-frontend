@@ -163,6 +163,89 @@ function Home({ language }: { language: Language }) {
 }
 
 
+
+type PortalSection = { slug:string; title:string; description:string; children:string[] }
+type PortalDefinition = { key:string; title:string; en:string; subtitle:string; sections:PortalSection[] }
+const section = (slug:string,title:string,children:string[],description:string):PortalSection => ({slug,title,children,description})
+const portalDefinitions:PortalDefinition[] = [
+ {key:'creator',title:'창작자 포털',en:'CREATOR PORTAL',subtitle:'나의 권리와 저작물, 이용내역 및 저작권 수입을 확인하는 창작자 업무 공간입니다.',sections:[
+ section('dashboard','MY DASHBOARD',['회원 자격 및 상태','신탁계약 현황','저작물 현황','저작권 수입 요약','분배·지급 현황','금융 서비스 현황','알림 및 처리 요청'],'회원자격·신탁·저작물·수입·지급·금융 현황을 한눈에 확인합니다.'),
+ section('membership','회원 관리',['회원정보','회원 유형·자격','자격 변경 및 신청 이력'],'회원정보와 회원 유형·자격, 자격 변경 및 신청 이력을 관리합니다.'),
+ section('trust','신탁계약 관리',['계약 현황','계약 범위 및 대상','계약 문서','변경·해지 신청 및 이력'],'신탁계약의 상태와 범위, 계약 문서 및 변경 이력을 확인합니다.'),
+ section('works','나의 저작물',['저작물 목록','저작물 상세','권리자·지분 정보','등록·수정 요청'],'등록된 저작물과 권리자·지분 정보를 확인하고 변경을 요청합니다.'),
+ section('tl-assets','TL 자산 관리',['TL 음악 자산','창작·등록 증명','원본 파일 증명','AI 음악 관련 증빙','권리·메타데이터 이력','유통 플랫폼 연결 현황'],'TL 음악 자산과 창작·원본 증명, AI 음악 증빙 및 연동 이력을 관리합니다.'),
+ section('usage','음악 사용내역',['전체 이용내역','매체·사업자별 이용내역','기간별 조회'],'매체·사업자·기간별 음악 이용기록을 확인합니다.'),
+ section('royalties','저작권료 정산',['예상 정산','확정 정산','지급 예정','지급 완료','미분배 내역','정산 명세서','이의신청'],'예상·확정 정산과 지급, 미분배 및 이의신청을 확인합니다.'),
+ section('finance','저작권 금융 서비스',['저작권료 담보대출','저작권 수입 기반 신용대출','한도·자격 조회','저작권 수입 증명서','금융 신청','심사 진행 현황','대출 실행 내역','상환 현황'],'저작권 수입을 바탕으로 한 금융 연계 및 신청 진행 상태를 확인합니다.'),
+ section('global','글로벌 저작권',['해외 이용내역','국가별 정산','국제 권리정보'],'해외 이용내역과 국가별 정산, 국제 권리정보를 확인합니다.'),
+ section('community','회원 커뮤니티',['공지','창작자 게시판','문의·지원'],'창작자 공지와 게시판, 문의·지원 정보를 확인합니다.')
+ ]},
+ {key:'association',title:'협회 관리자',en:'ASSOCIATION ADMINISTRATION',subtitle:'협회 담당자의 회원·권리·이용기록·징수·분배 및 시스템 운영 업무를 위한 관리 공간입니다.',sections:[
+ section('dashboard','통합 대시보드',['전체 업무 현황','처리 대기 및 알림','기간별 운영 지표'],'협회 전체 업무 현황과 주요 처리 대기 항목을 요약합니다.'),
+ section('members','회원 관리',['회원 검색·상세','회원 유형·자격 관리','가입·변경 신청 처리'],'회원 검색·상세, 회원 유형·자격 및 가입·변경 신청을 관리합니다.'),
+ section('trust','신탁계약 관리',['계약 등록·조회','계약 범위·상태','계약 변경·해지 이력'],'신탁계약 등록·조회와 계약 범위·상태 및 변경 이력을 관리합니다.'),
+ section('rights','저작물 및 권리 관리',['저작물 식별·등록','권리자·지분 관계','권리 충돌·중복 검토','권리 변경 이력'],'저작물 식별정보와 권리자·지분, 충돌 검토 및 변경 이력을 관리합니다.'),
+ section('usage','음악 이용 관리',['플랫폼 이용기록 수신','이용기록 검증','이용 유형·매체 분류','오류·누락·중복 처리'],'플랫폼 이용기록을 수신하고 검증하며 오류·누락·중복을 처리합니다.'),
+ section('tl-index','TL 적용지수 관리',['적용지수 조회','매체·이용 유형별 정책','변경 신청·승인','적용 이력·감사 로그'],'협회 정책에 따른 적용지수와 승인·감사 이력을 관리합니다.'),
+ section('collection','저작권료 징수 관리',['산정 근거','징수 대상·청구','수납 현황','미수·정정 처리'],'산정 근거와 청구·수납, 미수 및 정정 업무를 관리합니다.'),
+ section('distribution','분배 및 지급 관리',['분배 산정','권리자별 배분','지급 승인·처리','미분배 관리','정산 이력·보고'],'분배 산정과 권리자별 배분, 지급 승인 및 미분배 업무를 관리합니다.'),
+ section('finance','저작권 금융 관리',['금융기관 연계 현황','수입 데이터 검증','증명서 발급·이력','동의·접근 권한 관리'],'금융기관 연계와 수입 데이터 검증, 동의 및 접근 권한을 관리합니다.'),
+ section('integrations','유통사 연동 관리',['플랫폼 등록·계약','API 자격·키 관리','데이터 수신 상태','연동 이용료·정산'],'플랫폼 계약·API 자격과 데이터 수신, 연동 이용료를 관리합니다.'),
+ section('global','글로벌 관리',['국가·단체 관리','국제 협약·상호관리','해외 이용·정산','환율·통화 기준 관리'],'국가·단체와 국제 협약, 해외 이용·정산 및 통화 기준을 관리합니다.'),
+ section('management','협회 경영 관리',['업무 통계','수수료·비용 현황','운영 보고서'],'협회 업무 통계와 수수료·비용, 운영 보고서를 관리합니다.'),
+ section('system','시스템 관리',['사용자·역할·권한','보안·접근 이력','코드·기준정보','감사 로그·시스템 설정'],'사용자·역할·권한과 보안, 기준정보 및 감사 로그를 관리합니다.')
+ ]},
+ {key:'partner',title:'유통사·음악 이용사업자',en:'BUSINESS PARTNER PORTAL',subtitle:'독립 플랫폼과 음악 이용사업자가 계약·저작물·이용정보·정산 데이터를 연동하는 업무 공간입니다.',sections:[
+ section('dashboard','Business Dashboard',['연동 현황','최근 데이터 제출','검증 결과 및 알림'],'사업자 계약과 데이터 연동, 정산 처리 현황을 요약합니다.'),
+ section('business','사업자 관리',['사업자 정보','계약·서비스 범위','담당자·권한'],'사업자 정보와 계약·서비스 범위, 담당자 및 권한을 관리합니다.'),
+ section('works','저작물 연동',['저작물 식별정보 조회','메타데이터 매핑','권리정보 확인'],'저작물 식별정보와 메타데이터, 권리정보를 연동합니다.'),
+ section('usage','음악 사용정보 연동',['이용기록 제출','제출 상태·검증 결과','오류·재전송 관리'],'음악 이용기록 제출과 검증 결과, 오류·재전송을 관리합니다.'),
+ section('settlement','정산 연동',['이용량·산정 결과 확인','청구·수납 정보','정산 자료 교환'],'이용량·산정 결과와 청구·수납 및 정산 자료를 교환합니다.'),
+ section('api','API 및 기술 지원',['API 문서','인증키·접근 권한','테스트 환경','장애·문의'],'API 문서와 인증키, 테스트 환경 및 장애 지원을 제공합니다.'),
+ section('contracts','이용료 및 계약',['이용계약','시스템 이용료·연동 수수료','청구·납부 이력'],'이용계약과 시스템 이용료·연동 수수료, 납부 이력을 확인합니다.')
+ ]},
+ {key:'finance',title:'금융기관 제휴 포털',en:'FINANCIAL INSTITUTION PORTAL',subtitle:'제휴 금융기관이 창작자 동의 범위에서 저작권 수입을 확인하고 심사·상환 정보를 연계하는 업무 공간입니다.',sections:[
+ section('dashboard','Financial Dashboard',['기관별 처리 현황','심사 요청 대기','최근 처리 이력'],'기관별 수입 확인·심사 요청 및 처리 현황을 요약합니다.'),
+ section('institutions','제휴 금융기관 관리',['기관·담당자 정보','계약·접근 권한'],'기관·담당자 정보와 계약 및 접근 권한을 관리합니다.'),
+ section('income','저작권 수입 확인',['창작자 동의 확인','권리·수입 증명 요청','검증 결과·유효기간'],'창작자 동의와 권리·수입 증명 요청, 검증 결과를 확인합니다.'),
+ section('review','대출 심사 연동',['심사 요청','제출·조회 데이터','심사 상태 회신'],'심사 요청과 제출·조회 데이터, 심사 상태 회신을 관리합니다.'),
+ section('collateral','담보 및 상환 관리',['담보 관련 확인 정보','상환 재원·지급 연계','상태 변경 및 이력'],'담보 관련 확인 정보와 상환 재원·지급 연계 상태를 관리합니다.'),
+ section('reports','금융 통계 및 보고',['기관별 처리 현황','보고서·감사 이력'],'기관별 처리 현황과 보고서·감사 이력을 확인합니다.')
+ ]},
+ {key:'global',title:'글로벌 네트워크',en:'GLOBAL NETWORK PORTAL',subtitle:'국가별 관리단체와 국제 협력, 글로벌 저작물 및 해외 정산 업무를 연결하는 공간입니다.',sections:[
+ section('dashboard','Global Dashboard',['국가별 현황','협력단체 현황','국제 정산 현황'],'국가·단체·글로벌 저작물 및 국제 정산 현황을 요약합니다.'),
+ section('countries','국가별 관리',['국가 목록','국가별 제도·정책','현지 관리단체'],'국가별 제도와 관리단체, 통화 및 운영 기준을 관리합니다.'),
+ section('agreements','국제 협력·상호관리계약',['협력기관 목록','상호관리계약','계약 범위·유효기간'],'국제 협력기관과 상호관리계약의 범위·기간·상태를 관리합니다.'),
+ section('works','글로벌 저작물',['글로벌 저작물 목록','국가별 권리정보','식별정보 매핑'],'해외 권리정보와 저작물 식별정보를 연결합니다.'),
+ section('settlement','글로벌 정산',['해외 이용내역','국가별 정산','통화·환율 기준','분배 및 지급 현황'],'해외 이용내역과 국가·통화별 정산·분배 현황을 관리합니다.')
+ ]}
+]
+
+function PortalPage() {
+ const {portalKey,section:sectionSlug,child}=useParams()
+ const portal=portalDefinitions.find(item=>item.key===portalKey) ?? portalDefinitions[0]
+ const selected=portal.sections.find(item=>item.slug===sectionSlug)
+ const childIndex=child ? Number(child)-1 : -1
+ const selectedChild=selected && childIndex>=0 ? selected.children[childIndex] : undefined
+ const heading=selectedChild ?? selected?.title ?? portal.title
+ const description=selected ? (selectedChild ? selected.title+'의 세부 업무와 처리 상태를 확인하는 화면입니다.' : selected.description) : portal.subtitle
+ return <main className="portal-workspace">
+  <section className="portal-workspace-head"><div className="section-wrap"><div className="section-kicker">{portal.en}</div><div className="portal-workspace-breadcrumb"><Link to="/">TCS HOME</Link><span>/</span><span>{portal.title}</span>{selected&&<><span>/</span><b>{selected.title}</b></>}</div><h1>{heading}</h1><p>{description}</p><span className="demo-note">UI PROTOTYPE · 실제 회원·정산·금융 데이터 미연동</span></div></section>
+  <section className="portal-workspace-body section-wrap">
+   <aside className="portal-workspace-nav"><div className="portal-nav-heading"><small>{portal.en}</small><b>{portal.title}</b></div>
+    {portal.sections.map(item=><div className="portal-nav-group" key={item.slug}><Link className={selected?.slug===item.slug?'selected':''} to={'/portal/'+portal.key+'/'+item.slug}>{item.title}<ArrowUpRight size={13}/></Link>{selected?.slug===item.slug&&item.children.map((name,i)=><Link className={selectedChild===name?'child-selected':'portal-child-link'} key={name} to={'/portal/'+portal.key+'/'+item.slug+'/'+(i+1)}>{name}</Link>)}</div>)}
+   </aside>
+   <div className="portal-workspace-main">
+    <div className="portal-workspace-title"><div><div className="section-kicker">{selected ? selected.slug.toUpperCase() : 'WORKSPACE OVERVIEW'}</div><h2>{selected ? heading : '업무 메뉴'}</h2><p>{description}</p></div><span className="prototype-pill">시연용 화면</span></div>
+    {!selected ? <div className="portal-workspace-grid">{portal.sections.map((item,i)=><Link className="portal-workspace-card" key={item.slug} to={'/portal/'+portal.key+'/'+item.slug}><small>{String(i+1).padStart(2,'0')}</small><h3>{item.title}</h3><p>{item.description}</p><span>업무 화면 열기 <ArrowUpRight size={14}/></span></Link>)}</div> :
+      <><div className="portal-detail-summary"><div><small>SECTION</small><b>{selected.title}</b></div><div><small>SUB MENU</small><b>{selected.children.length}개</b></div><div><small>ACCESS</small><b>역할·권한 기준</b></div></div>
+      <div className="portal-child-list">{selected.children.map((name,i)=><Link key={name} to={'/portal/'+portal.key+'/'+selected.slug+'/'+(i+1)} className={selectedChild===name?'current':''}><span>{String(i+1).padStart(2,'0')}</span><b>{name}</b><ArrowUpRight size={15}/></Link>)}</div>
+      <div className="portal-demo-panel"><div className="section-kicker">WORKFLOW PREVIEW</div><h3>{selectedChild ?? selected.title} 업무 흐름</h3><p>이 화면은 메뉴 구조와 업무 흐름을 검토하기 위한 시연용 인터페이스입니다. 실제 데이터 조회·저장·승인·정산 처리는 연결되어 있지 않으며, 향후 확정된 API와 역할별 권한 정책에 따라 구현합니다.</p><div className="portal-demo-steps"><span>01 · 정보 확인</span><i/><span>02 · 근거 검토</span><i/><span>03 · 처리 이력</span></div></div></>}
+   </div>
+  </section>
+ </main>
+}
+
 type PublicItem = { slug: string; title: string; en: string; desc: string; points: string[] }
 type PublicCategory = { key: string; title: string; en: string; eyebrow: string; intro: string; items: PublicItem[] }
 
@@ -286,6 +369,9 @@ export default function App() {
     <Route path="/about" element={<Navigate to="/home/tcs-intro" replace/>}/>
     <Route path="/network" element={<Navigate to="/business/distributors" replace/>}/>
     <Route path="/contact" element={<Navigate to="/support/contact" replace/>}/>
+    <Route path="/portal/:portalKey" element={<PortalPage/>}/>
+    <Route path="/portal/:portalKey/:section" element={<PortalPage/>}/>
+    <Route path="/portal/:portalKey/:section/:child" element={<PortalPage/>}/>
     <Route path="/portal/*" element={<InfoPage type="portal"/>}/>
     {Object.keys(pageContent).map(key => <Route key={key} path={'/' + key} element={<InfoPage type={key}/>} />)}
     <Route path="*" element={<InfoPage type={location.pathname.split('/').filter(Boolean).pop() ?? 'about'}/>} />
