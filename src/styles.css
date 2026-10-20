@@ -127,3 +127,16 @@
 .public-detail-panel .primary-button{white-space:nowrap;flex:0 0 auto}
 @media(max-width:1050px){.main-nav{gap:9px}.main-nav a{font-size:9px}.public-content{grid-template-columns:215px minmax(0,1fr);gap:35px}}
 @media(max-width:760px){.main-nav{gap:18px}.main-nav a{font-size:12px}.public-hero{padding:55px 0 48px}.public-hero h1{font-size:35px;letter-spacing:-1.3px}.public-hero>div>p{font-size:12px}.public-content{grid-template-columns:1fr;gap:27px;padding-top:28px;padding-bottom:65px}.public-sidebar{position:static;display:grid;grid-template-columns:1fr 1fr;padding:12px}.public-sidebar-title{grid-column:1/-1;padding:4px 7px 13px}.public-sidebar>a:not(.public-sidebar-back){padding:10px 8px;border-left-width:2px;font-size:10px}.public-sidebar-back{grid-column:1/-1;margin:7px 7px 0}.public-points{grid-template-columns:1fr;gap:8px;margin:18px 0 25px}.public-point{min-height:0;padding:15px}.public-point>p{margin-top:8px}.public-child-grid{grid-template-columns:1fr}.public-child-card{min-height:0}.public-detail-panel{align-items:flex-start;flex-direction:column;padding:20px}.public-hero-meta{font-size:7px;flex-wrap:wrap}}
+
+.home-detail-links{padding-top:0;padding-bottom:105px}
+.home-detail-heading{display:flex;align-items:end;justify-content:space-between;margin:13px 0 23px}
+.home-detail-heading h2{font-size:30px;letter-spacing:-1px;margin:0}
+.home-detail-heading p{font-size:11px;color:#847a73;margin:0}
+.home-detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.home-detail-grid a{display:flex;align-items:center;gap:12px;padding:17px 18px;border:1px solid #eee8e3;background:#fff;transition:background .2s,border-color .2s}
+.home-detail-grid a:hover{background:#fff8f2;border-color:#e8b18f}
+.home-detail-grid b{font:700 10px 'DM Sans';color:#d68a5e}
+.home-detail-grid span{font-size:12px;font-weight:700;color:#49413b;flex:1}
+.home-detail-grid svg{color:#a14a32}
+@media(max-width:760px){.home-detail-links{padding-bottom:70px}.home-detail-heading{display:block}.home-detail-heading h2{font-size:25px}.home-detail-heading p{margin-top:8px}.home-detail-grid{grid-template-columns:1fr 1fr;gap:8px}.home-detail-grid a{padding:13px 10px;gap:7px}.home-detail-grid span{font-size:10px}}
+@media(max-width:390px){.home-detail-grid{grid-template-columns:1fr}}
