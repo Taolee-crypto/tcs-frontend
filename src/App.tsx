@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, NavLink, Route, Routes, useLocation, useParams } from 'react-router-dom'
+import { Link, NavLink, Route, Routes, useLocation, useParams, Navigate } from 'react-router-dom'
 import {
   ArrowRight, ArrowUpRight, Globe2, Menu, X, ShieldCheck, Music2, Wallet,
   Landmark, Network, FileMusic, ChartNoAxesCombined, Users, LockKeyhole,
@@ -270,6 +270,9 @@ export default function App() {
     <Route path="/home/:slug" element={<PublicPage categoryKey="home"/>}/>
     {publicCategories.filter(item => item.key !== 'home').map(item => <Route key={item.key} path={'/'+item.key} element={<PublicPage categoryKey={item.key}/>}/>)}
     {publicCategories.filter(item => item.key !== 'home').map(item => <Route key={item.key+'-child'} path={'/'+item.key+'/:slug'} element={<PublicPage categoryKey={item.key}/>}/>)}
+    <Route path="/about" element={<Navigate to="/home/tcs-intro" replace/>}/>
+    <Route path="/network" element={<Navigate to="/business/distributors" replace/>}/>
+    <Route path="/contact" element={<Navigate to="/support/contact" replace/>}/>
     <Route path="/portal/*" element={<InfoPage type="portal"/>}/>
     {Object.keys(pageContent).map(key => <Route key={key} path={'/' + key} element={<InfoPage type={key}/>} />)}
     <Route path="*" element={<InfoPage type={location.pathname.split('/').filter(Boolean).pop() ?? 'about'}/>} />
