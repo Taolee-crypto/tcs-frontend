@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, CheckCircle2, ClipboardList, FileCheck2, LockKeyhole, Network, ShieldCheck } from 'lucide-react'
+import { ArrowRight, CheckCircle2, ClipboardList, FileCheck2, LockKeyhole, Network, ShieldCheck } from 'lucide-react'
 
 type PublicDetailProps = {
   categoryKey: string
