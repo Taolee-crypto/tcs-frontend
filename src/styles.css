@@ -275,3 +275,12 @@
  .portal-workbench-stats{gap:6px}.portal-workbench-stats article{padding:10px}.portal-workbench-stats b{font-size:10px}
  .detail-purpose{padding:16px}.detail-list-panel,.portal-workbench-card,.portal-workbench-menu{padding:14px}
 }
+
+
+.portal-page-result{padding:18px;border:1px solid #eee8e2;background:#fff}
+.portal-page-result-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding-top:13px}
+.portal-page-result-grid article{min-height:82px;padding:12px;background:#fdfbf9;border:1px solid #f0ebe6}
+.portal-page-result-grid small{font:700 8px 'DM Sans';letter-spacing:.7px;color:#bd7950}
+.portal-page-result-grid p{font-size:10px;line-height:1.75;color:#625950;margin:8px 0 0}
+.portal-workbench-intro p{max-width:760px}
+@media(max-width:760px){.portal-page-result-grid{grid-template-columns:1fr}.portal-page-result{padding:14px}}
