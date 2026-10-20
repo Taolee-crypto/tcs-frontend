@@ -179,7 +179,7 @@ const portalDefinitions:PortalDefinition[] = [
  section('usage','음악 사용내역',['전체 이용내역','매체·사업자별 이용내역','기간별 조회'],'매체·사업자·기간별 음악 이용기록을 확인합니다.'),
  section('royalties','저작권료 정산',['예상 정산','확정 정산','지급 예정','지급 완료','미분배 내역','정산 명세서','이의신청'],'예상·확정 정산과 지급, 미분배 및 이의신청을 확인합니다.'),
  section('finance','저작권 금융 서비스',['저작권료 담보대출','저작권 수입 기반 신용대출','한도·자격 조회','저작권 수입 증명서','금융 신청','심사 진행 현황','대출 실행 내역','상환 현황'],'저작권 수입을 바탕으로 한 금융 연계 및 신청 진행 상태를 확인합니다.'),
- section('global','글로벌 저작권',['해외 이용내역','국가별 정산','국제 권리정보'],'해외 이용내역과 국가별 정산, 국제 권리정보를 확인합니다.'),
+ section('global','글로벌 저작권',['글로벌 TL 정산 내역','국가별 세금 공제 내역','국제 지급·증빙'],'국가별 협회 연계가 아닌 공통 TL 정산 결과와 본인에게 적용된 세금 공제 및 지급 내역을 확인합니다.'),
  section('community','회원 커뮤니티',['공지','창작자 게시판','문의·지원'],'창작자 공지와 게시판, 문의·지원 정보를 확인합니다.')
  ]},
  {key:'association',title:'협회 관리자',en:'ASSOCIATION ADMINISTRATION',subtitle:'협회 담당자의 회원·권리·이용기록·징수·분배 및 시스템 운영 업무를 위한 관리 공간입니다.',sections:[
@@ -193,7 +193,7 @@ const portalDefinitions:PortalDefinition[] = [
  section('distribution','분배 및 지급 관리',['분배 산정','권리자별 배분','지급 승인·처리','미분배 관리','정산 이력·보고'],'분배 산정과 권리자별 배분, 지급 승인 및 미분배 업무를 관리합니다.'),
  section('finance','저작권 금융 관리',['금융기관 연계 현황','수입 데이터 검증','증명서 발급·이력','동의·접근 권한 관리'],'금융기관 연계와 수입 데이터 검증, 동의 및 접근 권한을 관리합니다.'),
  section('integrations','유통사 연동 관리',['플랫폼 등록·계약','API 자격·키 관리','데이터 수신 상태','연동 이용료·정산'],'플랫폼 계약·API 자격과 데이터 수신, 연동 이용료를 관리합니다.'),
- section('global','글로벌 관리',['국가·단체 관리','국제 협약·상호관리','해외 이용·정산','환율·통화 기준 관리'],'국가·단체와 국제 협약, 해외 이용·정산 및 통화 기준을 관리합니다.'),
+ section('global','글로벌 정산·세금 관리',['글로벌 TL 정산 정책','창작자 납세 관할·세금정보','국가별 세율·조세조약 정책','공제·지급 승인 및 감사 이력'],'공통 TL 정산을 관리하고 지급 단계의 국가별 세금 공제 정책과 근거·승인 이력을 관리합니다.'),
  section('management','협회 경영 관리',['업무 통계','수수료·비용 현황','운영 보고서'],'협회 업무 통계와 수수료·비용, 운영 보고서를 관리합니다.'),
  section('system','시스템 관리',['사용자·역할·권한','보안·접근 이력','코드·기준정보','감사 로그·시스템 설정'],'사용자·역할·권한과 보안, 기준정보 및 감사 로그를 관리합니다.')
  ]},
@@ -214,12 +214,13 @@ const portalDefinitions:PortalDefinition[] = [
  section('collateral','담보 및 상환 관리',['담보 관련 확인 정보','상환 재원·지급 연계','상태 변경 및 이력'],'담보 관련 확인 정보와 상환 재원·지급 연계 상태를 관리합니다.'),
  section('reports','금융 통계 및 보고',['기관별 처리 현황','보고서·감사 이력'],'기관별 처리 현황과 보고서·감사 이력을 확인합니다.')
  ]},
- {key:'global',title:'글로벌 네트워크',en:'GLOBAL NETWORK PORTAL',subtitle:'국가별 관리단체와 국제 협력, 글로벌 저작물 및 해외 정산 업무를 연결하는 공간입니다.',sections:[
- section('dashboard','Global Dashboard',['국가별 현황','협력단체 현황','국제 정산 현황'],'국가·단체·글로벌 저작물 및 국제 정산 현황을 요약합니다.'),
- section('countries','국가별 관리',['국가 목록','국가별 제도·정책','현지 관리단체'],'국가별 제도와 관리단체, 통화 및 운영 기준을 관리합니다.'),
- section('agreements','국제 협력·상호관리계약',['협력기관 목록','상호관리계약','계약 범위·유효기간'],'국제 협력기관과 상호관리계약의 범위·기간·상태를 관리합니다.'),
- section('works','글로벌 저작물',['글로벌 저작물 목록','국가별 권리정보','식별정보 매핑'],'해외 권리정보와 저작물 식별정보를 연결합니다.'),
- section('settlement','글로벌 정산',['해외 이용내역','국가별 정산','통화·환율 기준','분배 및 지급 현황'],'해외 이용내역과 국가·통화별 정산·분배 현황을 관리합니다.')
+ {key:'global',title:'글로벌 네트워크',en:'GLOBAL TL SETTLEMENT NETWORK',subtitle:'국가별 저작권협회나 상호관리계약에 의존하지 않고, 공통 TL 정산과 창작자별 세금 공제·최종 지급을 연결하는 글로벌 업무 공간입니다.',sections:[
+ section('dashboard','Global Dashboard',['글로벌 TL 발생량','창작자별 정산 현황','세금 공제·지급 현황'],'국가와 플랫폼을 넘어 발생한 TL 정산 및 창작자별 공제·지급 현황을 요약합니다.'),
+ section('creators','글로벌 창작자 관리',['창작자 프로필','거주지·납세 관할','권리·지분 및 지급 계정'],'국적과 세법상 거주지, 납세 관할, 권리 및 지급 정보를 구분해 관리합니다.'),
+ section('platforms','글로벌 플랫폼 네트워크',['참여 플랫폼 목록','플랫폼 연동 상태','이용기록·TL 발생 내역'],'독립 플랫폼에서 제출한 이용기록과 공통 TL 정산 데이터를 연결합니다.'),
+ section('settlement','글로벌 TL 정산',['플랫폼별 TL 발생 내역','창작자별 TL 배분','정산 확정·지급 기준'],'공통 TL 단위로 이용량을 환산하고 창작자별 배분 및 정산 내역을 관리합니다.'),
+ section('tax','국가별 세금 공제',['납세 관할·세법상 거주지','소득 유형별 세율 정책','조세조약·원천징수 검토','세금 공제 이력'],'실제 지급 단계에서 창작자의 납세 관할과 소득 유형 등에 따른 세금 공제 정책을 적용하고 근거를 보존합니다.'),
+ section('payments','국제 지급·증빙',['공제 전 정산액','세금 공제액·공제 근거','최종 지급액·지급 상태','세금·지급 증빙'],'공제 전 금액, 공제액, 최종 지급액을 분리해 기록하고 국가별 지급 및 증빙을 관리합니다.')
  ]}
 ]
 
@@ -258,7 +259,7 @@ const publicCategories: PublicCategory[] = [
     { slug:'tl-framework', title:'TL 관리 기준', en:'TL Measurement Framework', desc:'TL은 음악 이용시간을 표준화해 관리하기 위한 기준 단위입니다.', points:['기본 TL은 음악 이용시간(초) × 1 TL로 산출합니다.','적용 TL은 기본 TL에 협회가 설정한 적용지수를 반영합니다.','TL은 법적으로 확정된 원화 저작권 사용료와 구분됩니다.'] },
     { slug:'creator-economy', title:'창작자 경제 생태계', en:'Creator Economy', desc:'창작자의 권리와 이용기록, 저작권 수입이 투명하게 이어지는 생태계 기반을 마련합니다.', points:['창작자와 권리자의 권리정보를 연결합니다.','정산 내역은 예상·확정·지급 단계로 구분합니다.','회원 자격과 신탁계약 상태를 별도로 관리합니다.'] },
     { slug:'copyright-finance', title:'저작권 금융', en:'Copyright Finance', desc:'검증된 저작권 수입정보를 창작자의 금융 기회와 연결하는 데이터 연계 기반입니다.', points:['금융기관이 대출 심사와 조건을 독립적으로 결정합니다.','창작자의 적법한 동의 범위에서 수입정보를 확인합니다.','저작권 소유권이나 기존 신탁권리가 대출만으로 자동 이전되지 않습니다.'] },
-    { slug:'global-network', title:'글로벌 네트워크', en:'Global Network', desc:'국가별 관리체계와 해외 관리단체를 연결하는 상호운용 기반을 구축합니다.', points:['국가별 제도와 관리단체의 차이를 고려합니다.','국제 협력 및 상호관리계약 정보를 관리합니다.','해외 이용료의 징수·분배·정산 흐름을 연결합니다.'] },
+    { slug:'global-network', title:'글로벌 네트워크', en:'Global TL Settlement', desc:'국가와 플랫폼에 관계없이 공통 TL 정산으로 글로벌 창작자에게 발생한 기여를 계산하고 최종 지급 단계에서 국가별 세금 공제를 적용하는 구조입니다.', points:['참여 플랫폼의 이용기록을 공통 TL 단위로 환산하고 창작자별로 배분합니다.','국가별 저작권협회나 상호관리계약을 글로벌 정산의 필수 전제로 두지 않습니다.','최종 지급 단계에서 세법상 거주지·납세 관할·소득 유형·조세조약 등 적용 근거를 확인해 세금을 공제합니다.'] },
   ]},
   { key:'copyright', title:'저작권 관리 안내', en:'Copyright Management', eyebrow:'RIGHTS · USAGE · ROYALTIES', intro:'저작물과 권리정보의 등록부터 음악 이용내역, 사용료 산정·징수, 분배·지급까지 저작권 관리의 주요 절차를 안내합니다.', items:[
     {slug:'music-copyright',title:'음악저작권 안내',en:'Music Copyright',desc:'음악저작물에 관한 권리정보와 권리관계를 이해하기 위한 기본 안내입니다.',points:['저작물과 저작인접물 등 권리 대상은 구분해 확인해야 합니다.','권리자·지분·관리 범위는 확인 가능한 자료에 따라 관리합니다.','권리정보 변경은 근거자료와 이력을 함께 보존합니다.']},
@@ -350,7 +351,7 @@ const pageContent: Record<string, { eyebrow: string; title: string; desc: string
   membership: { eyebrow: 'MEMBERSHIP', title: '회원과 신탁 안내', desc: '회원 유형, 신탁계약, 가입 자격과 절차를 안내합니다.' },
   network: { eyebrow: 'PLATFORM NETWORK', title: '독립 플랫폼을 위한\n공통 연동 인프라', desc: '음원 유통사와 음악 이용사업자는 독립성을 유지하면서 표준 API로 TCS에 연결됩니다.' },
   finance: { eyebrow: 'COPYRIGHT FINANCE', title: '저작권 수입을 기반으로\n창작자의 금융 기회를', desc: '저작권료 지급채권 및 지속적인 저작권 수입 실적을 바탕으로 금융기관과 연계합니다.' },
-  global: { eyebrow: 'GLOBAL NETWORK', title: '국경을 넘어 연결되는\n저작권 관리', desc: '국가별 관리단체 및 국제 정산 네트워크와의 협력 기반을 구축합니다.' },
+  global: { eyebrow: 'GLOBAL TL SETTLEMENT', title: '국경을 넘어 하나로 연결되는\nTL 정산 네트워크', desc: '국가별 저작권협회 체계에 의존하지 않고 공통 TL 정산을 적용하며, 최종 지급 단계에서 창작자별 납세 관할과 세금 공제 기준을 연결합니다.' },
   login: { eyebrow: 'SECURE ACCESS', title: 'TCS 통합 로그인', desc: '부여된 권한에 따라 이용 가능한 업무 포털로 안전하게 접속합니다.' },
   contact: { eyebrow: 'CONTACT TCS', title: '협력 및 연동 문의', desc: '플랫폼 연동, 기관 협력 및 서비스 관련 문의를 접수합니다.' },
 }
@@ -366,7 +367,7 @@ function LoginPage() {
   {key:'association',title:'협회 관리자',desc:'회원·신탁·권리·징수·분배 관리'},
   {key:'partner',title:'유통사·음악 이용사업자',desc:'저작물·이용정보·정산·API 연동'},
   {key:'finance',title:'금융기관 제휴 포털',desc:'수입 확인·대출 심사·상환 연계'},
-  {key:'global',title:'글로벌 네트워크',desc:'국가별 관리·국제 협력·글로벌 정산'}
+  {key:'global',title:'글로벌 네트워크',desc:'글로벌 TL 정산·세금 공제·국제 지급'}
  ]
  return <main className="login-page"><div className="login-page-inner"><div className="section-kicker">SECURE ROLE-BASED ACCESS</div><h1>TCS 통합 접속</h1><p>사용자 역할에 해당하는 업무 공간을 선택합니다. 실제 계정 인증과 권한 검증은 백엔드 연동 단계에서 연결됩니다.</p><div className="login-demo-notice">시연 모드 · 실제 로그인·회원 인증 기능은 아직 연결되지 않았습니다.</div><div className="login-role-grid">{choices.map(item=><Link key={item.key} to={'/portal/'+item.key}><small>ROLE WORKSPACE</small><h2>{item.title}</h2><p>{item.desc}</p><span>업무 공간 둘러보기 <ArrowUpRight size={15}/></span></Link>)}</div><Link className="login-home-link" to="/">TCS HOME으로 돌아가기 <ArrowRight size={15}/></Link></div></main>
 }
