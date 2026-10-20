@@ -23,7 +23,7 @@ const portals = [
   { icon: Landmark, title: '협회 관리자', en: 'Association Portal', desc: '회원·신탁·권리·징수·분배 업무를 관리합니다.', to: '/portal/association', tag: 'FOR ASSOCIATIONS' },
   { icon: Network, title: '유통사·이용사업자', en: 'Business Portal', desc: '독립 플랫폼의 저작물 및 음악 사용정보를 연동합니다.', to: '/portal/partner', tag: 'FOR PARTNERS' },
   { icon: Wallet, title: '금융기관 포털', en: 'Finance Portal', desc: '동의 기반 저작권 수입 확인과 금융 업무를 연결합니다.', to: '/portal/finance', tag: 'FOR FINANCIAL INSTITUTIONS' },
-  { icon: Globe2, title: '글로벌 네트워크', en: 'Global Network', desc: '국가별 관리단체와 국제 협력 및 해외 정산을 연결합니다.', to: '/portal/global', tag: 'FOR GLOBAL PARTNERS' },
+  { icon: Globe2, title: '글로벌 네트워크', en: 'Global Network', desc: '국가와 플랫폼을 넘어 TL 정산과 창작자별 세금 공제·지급을 연결합니다.', to: '/portal/global', tag: 'FOR GLOBAL CREATORS' },
 ]
 
 function Shell({ children, language, setLanguage }: { children: React.ReactNode; language: Language; setLanguage: (v: Language) => void }) {
@@ -145,7 +145,7 @@ function Home({ language }: { language: Language }) {
       <div className="section-wrap finance-band-inner"><div className="finance-icon"><Landmark size={27}/></div><div className="finance-band-copy"><div className="section-kicker">COPYRIGHT FINANCE</div><h2>저작권 수입이 창작자의<br/>새로운 금융 기회로 이어지도록.</h2><p>창작자의 동의에 기반한 권리·수입 데이터 검증을 금융기관과 연결합니다. 대출 심사와 금융 조건은 제휴 금융기관이 독립적으로 결정합니다.</p></div><Link className="outline-button" to="/finance">저작권 금융 안내 <ArrowUpRight size={16}/></Link></div>
     </section>
 
-    <section className="global-section section-wrap"><div className="global-graphic"><div className="global-globe"><Globe2 size={76} strokeWidth={1}/><span className="globe-dot dot-1"/><span className="globe-dot dot-2"/><span className="globe-dot dot-3"/></div><div className="global-orbit-line"/></div><div className="global-copy"><div className="section-kicker">BEYOND BORDERS</div><h2>음악의 국경을 넘어<br/><em>글로벌 권리 네트워크로.</em></h2><p>국가별 저작권 관리체계와 해외 관리단체, 국제 협력 및 상호관리 구조를 고려해 글로벌 권리정보와 정산 연결 기반을 구축합니다.</p><Link className="inline-link" to="/global">글로벌 네트워크 <ArrowUpRight size={16}/></Link></div></section>
+    <section className="global-section section-wrap"><div className="global-graphic"><div className="global-globe"><Globe2 size={76} strokeWidth={1}/><span className="globe-dot dot-1"/><span className="globe-dot dot-2"/><span className="globe-dot dot-3"/></div><div className="global-orbit-line"/></div><div className="global-copy"><div className="section-kicker">GLOBAL TL SETTLEMENT</div><h2>국경을 넘어 하나의 기준으로<br/><em>창작자의 정산을 연결합니다.</em></h2><p>국가별 저작권협회 체계에 의존하지 않고 공통 TL 정산으로 글로벌 플랫폼과 창작자를 연결합니다. 최종 지급 단계에서는 창작자의 납세 관할과 소득 유형에 맞는 세금 공제를 적용합니다.</p><Link className="inline-link" to="/global">글로벌 네트워크 <ArrowUpRight size={16}/></Link></div></section>
 
     <section className="home-detail-links section-wrap">
       <div className="section-kicker">EXPLORE TCS</div>
