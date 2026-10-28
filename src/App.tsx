@@ -1,3 +1,4 @@
+import RightsPilot from './RightsPilot'
 import { useState } from 'react'
 import { PublicDetailPanel, PortalDetailPanel } from './DetailPanels'
 import { Link, NavLink, Route, Routes, useLocation, useParams, Navigate } from 'react-router-dom'
@@ -41,6 +42,7 @@ function Shell({ children, language, setLanguage }: { children: React.ReactNode;
       </nav>
       <div className="top-actions">
         <button className="language" onClick={() => setLanguage(isKr ? 'EN' : 'KR')}><Globe2 size={16}/>{language}<span>⌄</span></button>
+        <Link className="login-button" to="/rights-pilot">{isKr ? '권리관리 시범' : 'Rights pilot'}</Link>
         <Link className="login-button" to="/login">{isKr ? '로그인' : 'Sign in'} <ArrowUpRight size={15}/></Link>
       </div>
     </header>
@@ -386,6 +388,7 @@ export default function App() {
     <Route path="/about" element={<Navigate to="/home/tcs-intro" replace/>}/>
     <Route path="/network" element={<Navigate to="/business/distributors" replace/>}/>
     <Route path="/contact" element={<Navigate to="/support/contact" replace/>}/>
+    <Route path="/rights-pilot" element={<RightsPilot/>}/>
     <Route path="/login" element={<LoginPage/>}/>
     <Route path="/portal/:portalKey" element={<PortalPage/>}/>
     <Route path="/portal/:portalKey/:section" element={<PortalPage/>}/>
@@ -395,3 +398,4 @@ export default function App() {
     <Route path="*" element={<InfoPage type={location.pathname.split('/').filter(Boolean).pop() ?? 'about'}/>} />
   </Routes></Shell>
 }
+
